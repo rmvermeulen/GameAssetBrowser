@@ -39,6 +39,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-next/references/csv_file.gd"
 }, {
+"base": "Reference",
+"class": "Cache",
+"language": "GDScript",
+"path": "res://Cache.gd"
+}, {
 "base": "Node",
 "class": "CallbackDelegator",
 "language": "GDScript",
@@ -68,6 +73,11 @@ _global_script_classes=[ {
 "class": "EditorTools",
 "language": "GDScript",
 "path": "res://addons/godot-next/global/editor_tools.gd"
+}, {
+"base": "Reference",
+"class": "FS",
+"language": "GDScript",
+"path": "res://src/FS.gd"
 }, {
 "base": "Reference",
 "class": "FileSearch",
@@ -331,12 +341,14 @@ _global_script_class_icons={
 "BitFlag": "",
 "Bitset": "",
 "CSVFile": "",
+"Cache": "",
 "CallbackDelegator": "",
 "ClassType": "",
 "Cycle": "res://addons/godot-next/icons/icon_cycle.svg",
 "DebugLabel": "",
 "DiscreteGradientTexture": "",
 "EditorTools": "",
+"FS": "",
 "FileSearch": "",
 "FileSystemLink": "",
 "FutureThreadPool": "",
@@ -398,8 +410,7 @@ run/main_scene="res://App.tscn"
 
 [display]
 
-window/size/width=512
-window/size/height=376
+window/size/height=800
 
 [editor_plugins]
 

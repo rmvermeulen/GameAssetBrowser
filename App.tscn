@@ -34,13 +34,13 @@ __meta__ = {
 }
 
 [node name="Sidebar" type="VBoxContainer" parent="Columns"]
-margin_right = 117.0
-margin_bottom = 376.0
+margin_right = 235.0
+margin_bottom = 800.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
 
 [node name="FolderEntry" type="TabContainer" parent="Columns/Sidebar"]
-margin_right = 117.0
+margin_right = 235.0
 margin_bottom = 24.0
 custom_styles/tab_fg = SubResource( 1 )
 custom_styles/tab_disabled = SubResource( 2 )
@@ -60,33 +60,33 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="FolderName" type="LineEdit" parent="Columns/Sidebar/FolderEntry/VBoxContainer"]
-margin_right = 86.0
+margin_right = 204.0
 margin_bottom = 24.0
 size_flags_horizontal = 3
 placeholder_text = "folder name"
 
 [node name="Confirm" type="Button" parent="Columns/Sidebar/FolderEntry/VBoxContainer"]
-margin_left = 90.0
-margin_right = 117.0
+margin_left = 208.0
+margin_right = 235.0
 margin_bottom = 24.0
 text = "ok"
 
 [node name="InfoLabel" type="Label" parent="Columns/Sidebar"]
 margin_top = 28.0
-margin_right = 117.0
-margin_bottom = 76.0
+margin_right = 235.0
+margin_bottom = 59.0
 text = "This is some information about what is going on"
 autowrap = true
 
 [node name="Rows" type="VBoxContainer" parent="Columns"]
-margin_left = 121.0
-margin_right = 512.0
-margin_bottom = 376.0
+margin_left = 239.0
+margin_right = 1024.0
+margin_bottom = 800.0
 size_flags_horizontal = 3
 
 [node name="DirTabs" type="TabContainer" parent="Columns/Rows"]
-margin_right = 391.0
-margin_bottom = 248.0
+margin_right = 785.0
+margin_bottom = 636.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 2.0
@@ -95,8 +95,9 @@ __meta__ = {
 }
 
 [node name="Output" type="RichTextLabel" parent="Columns/Rows"]
-margin_top = 252.0
-margin_right = 391.0
-margin_bottom = 376.0
+margin_top = 640.0
+margin_right = 785.0
+margin_bottom = 800.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5

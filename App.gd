@@ -1,11 +1,13 @@
 extends Control
 
-export (Array, String) var root_folders := []
+const FolderTree := preload("res://FolderTree.tscn")
+
+export (Array, String) var root_folders := ["D:/Assets/"]
 
 onready var add_folder_button: Button = find_node("AddFolder")
 onready var folder_name_edit: LineEdit = find_node("FolderName")
 onready var edit_confirm: Button = find_node("Confirm")
-
+onready var info_label: Label = find_node("InfoLabel")
 onready var entry_tabs: TabContainer = find_node("FolderEntry")
 onready var dir_tabs: TabContainer = find_node("DirTabs")
 
@@ -14,26 +16,31 @@ func _ready():
 	assert(OK == add_folder_button.connect("pressed", self, "_on_add_folder_pressed"))
 	assert(OK == folder_name_edit.connect("text_entered", self, "_on_folder_name_entered"))
 	assert(OK == edit_confirm.connect("pressed", self, "_on_edit_confirm_pressed"))
+
 	_update_dir_tabs()
 
 
 func _update_dir_tabs():
-	while dir_tabs.get_child_count() > root_folders.size():
-		var child := dir_tabs.get_child(-1)
-		child.queue_free()
+	for child in dir_tabs.get_children():
+		if root_folders.has(child.path):
+			continue
 		dir_tabs.remove_child(child)
+		child.queue_free()
 
-	while dir_tabs.get_child_count() < root_folders.size():
-		var child := Tree.new()
-		dir_tabs.add_child(child)
+	for folder in root_folders:
+		if _find_folder_tree(folder):
+			continue
+		var ft: Tree = FolderTree.instance()
+		ft.path = folder
+		ft.name = '[%s]' % folder
+		dir_tabs.add_child(ft)
 
-	for i in dir_tabs.get_child_count():
-		var tree: Tree = dir_tabs.get_child(i)
-		tree.clear()
-		tree.name = root_folders[i]
 
-		var item := tree.create_item()
-		item.set_text(0, tree.name)
+func _find_folder_tree(folder: String) -> Tree:
+	for child in dir_tabs.get_children():
+		if child.path == folder:
+			return child
+	return null
 
 
 func _input(event):
@@ -54,7 +61,8 @@ func _on_folder_name_entered(folder_name: String):
 		return
 	# if is_valid(folder_name)
 	folder_name_edit.clear()
-	root_folders.append(folder_name)
+	if not root_folders.has(folder_name):
+		root_folders.append(folder_name)
 	entry_tabs.current_tab = 0
 	_update_dir_tabs()
 
