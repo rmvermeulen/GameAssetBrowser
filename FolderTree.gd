@@ -2,8 +2,6 @@ extends Tree
 
 enum State { WORKING, DONE }
 
-# const Cache := preload("res://Cache.gd")
-
 export (String) var path := "" setget set_path
 
 var cache: Cache = Singletons.fetch(Cache)
@@ -11,14 +9,24 @@ var cache: Cache = Singletons.fetch(Cache)
 
 func _ready():
 	assert(OK == connect("item_activated", self, "_on_item_activated"))
+	assert(OK == connect("item_selected", self, "_on_item_selected"))
 	update_tree()
+
+
+func _on_item_selected():
+	var item := get_selected()
+	if not item || not item.has_meta("path"):
+		return
+	call_deferred("readdir", item.get_meta("path"), item)
+	# item.call_deferred("set", "collapsed", true)
+	item.collapsed = true
 
 
 func _on_item_activated():
 	var item := get_selected()
 	if not item || not item.has_meta("path"):
 		return
-	call_deferred("readdir", item.get_meta("path"), item)
+	item.collapsed = false
 
 
 func set_path(value: String) -> void:
@@ -44,8 +52,10 @@ func readdir(dir_path: String, root: TreeItem) -> void:
 
 	var entries := []
 	if cache.has_item(dir_path):
+		prints('cache hit')
 		entries = cache.get_item(dir_path)
 	else:
+		prints('cache miss')
 		if dir.open(dir_path) != OK:
 			return
 		if dir.list_dir_begin(true, false) != OK:

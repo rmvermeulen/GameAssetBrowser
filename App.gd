@@ -19,6 +19,14 @@ func _ready():
 
 	_update_dir_tabs()
 
+	Logger.fine("test fine")
+	Logger.trace("test trace")
+	Logger.debug("test debug")
+	Logger.info("test info")
+	Logger.warn("test warning")
+	Logger.error("test error")
+	Logger.fatal("test fatal")
+
 
 func _update_dir_tabs():
 	for child in dir_tabs.get_children():
