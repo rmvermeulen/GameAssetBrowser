@@ -1,0 +1,102 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://App.gd" type="Script" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=1]
+
+[sub_resource type="StyleBoxEmpty" id=2]
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="App" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Columns" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sidebar" type="VBoxContainer" parent="Columns"]
+margin_right = 117.0
+margin_bottom = 376.0
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="FolderEntry" type="TabContainer" parent="Columns/Sidebar"]
+margin_right = 117.0
+margin_bottom = 24.0
+custom_styles/tab_fg = SubResource( 1 )
+custom_styles/tab_disabled = SubResource( 2 )
+custom_styles/tab_bg = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
+tabs_visible = false
+use_hidden_tabs_for_min_size = true
+
+[node name="AddFolder" type="Button" parent="Columns/Sidebar/FolderEntry"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+text = "add root folder"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="Columns/Sidebar/FolderEntry"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="FolderName" type="LineEdit" parent="Columns/Sidebar/FolderEntry/VBoxContainer"]
+margin_right = 86.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+placeholder_text = "folder name"
+
+[node name="Confirm" type="Button" parent="Columns/Sidebar/FolderEntry/VBoxContainer"]
+margin_left = 90.0
+margin_right = 117.0
+margin_bottom = 24.0
+text = "ok"
+
+[node name="InfoLabel" type="Label" parent="Columns/Sidebar"]
+margin_top = 28.0
+margin_right = 117.0
+margin_bottom = 76.0
+text = "This is some information about what is going on"
+autowrap = true
+
+[node name="Rows" type="VBoxContainer" parent="Columns"]
+margin_left = 121.0
+margin_right = 512.0
+margin_bottom = 376.0
+size_flags_horizontal = 3
+
+[node name="DirTabs" type="TabContainer" parent="Columns/Rows"]
+margin_right = 391.0
+margin_bottom = 248.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Output" type="RichTextLabel" parent="Columns/Rows"]
+margin_top = 252.0
+margin_right = 391.0
+margin_bottom = 376.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
