@@ -14,7 +14,7 @@ func _init():
 	assert(thread_pool.discard_finished_tasks, "ThreadPool config incompatible with AsyncLoader")
 	assert(OK == thread_pool.connect("task_discarded", self, "_on_task_discarded"))
 
-	prints('AsyncLoader ready')
+	Logger.info('AsyncLoader ready')
 
 
 func load(path: String, node: Node, callback: String):

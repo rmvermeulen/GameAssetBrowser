@@ -47,7 +47,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Cache",
 "language": "GDScript",
-"path": "res://Cache.gd"
+"path": "res://src/Cache.gd"
 }, {
 "base": "Node",
 "class": "CallbackDelegator",
@@ -448,7 +448,7 @@ _global_script_class_icons={
 
 config/name="GameAssetBrowser"
 config/description="Manage large amounts of unsorted assets"
-run/main_scene="res://App.tscn"
+run/main_scene="res://src/App.tscn"
 
 [autoload]
 

@@ -1,6 +1,6 @@
 extends Control
 
-const FolderTree := preload("res://FolderTree.tscn")
+const FolderTree := preload("res://src/FolderTree.tscn")
 
 export (Array, String) var root_folders := ["D:/Assets/"]
 
@@ -13,19 +13,13 @@ onready var dir_tabs: TabContainer = find_node("DirTabs")
 
 
 func _ready():
+	Logger.set_logger_level(Logger.LOG_LEVEL_INFO)
+
 	assert(OK == add_folder_button.connect("pressed", self, "_on_add_folder_pressed"))
 	assert(OK == folder_name_edit.connect("text_entered", self, "_on_folder_name_entered"))
 	assert(OK == edit_confirm.connect("pressed", self, "_on_edit_confirm_pressed"))
 
 	_update_dir_tabs()
-
-	Logger.fine("test fine")
-	Logger.trace("test trace")
-	Logger.debug("test debug")
-	Logger.info("test info")
-	Logger.warn("test warning")
-	Logger.error("test error")
-	Logger.fatal("test fatal")
 
 
 func _update_dir_tabs():

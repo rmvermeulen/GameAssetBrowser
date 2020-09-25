@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://App.gd" type="Script" id=1]
+[ext_resource path="res://src/App.gd" type="Script" id=1]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -50,12 +50,12 @@ tabs_visible = false
 use_hidden_tabs_for_min_size = true
 
 [node name="AddFolder" type="Button" parent="Columns/Sidebar/FolderEntry"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 text = "add root folder"
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Columns/Sidebar/FolderEntry"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 

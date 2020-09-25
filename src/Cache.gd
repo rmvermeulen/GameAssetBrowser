@@ -10,13 +10,13 @@ var _next_id: int = 0
 func store_item(key: String, item: Array):
 	_data[key] = {"id": _next_id, "item": item}
 	_next_id = (_next_id + 1) % MAX_ID
-	print_debug('added %d entries' % item.size())
+	Logger.trace('added %d entries' % item.size())
 	# remove old items
 	while _count() > max_entries:
 		_remove_oldest()
-		print_debug('cache removed key')
+		Logger.trace('cache removed key')
 	# report
-	print_debug('cache size', _count())
+	Logger.trace('cache size', _count())
 
 
 func has_item(key: String):

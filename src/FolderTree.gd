@@ -52,10 +52,10 @@ func readdir(dir_path: String, root: TreeItem) -> void:
 
 	var entries := []
 	if cache.has_item(dir_path):
-		prints('cache hit')
+		Logger.trace('cache hit')
 		entries = cache.get_item(dir_path)
 	else:
-		prints('cache miss')
+		Logger.trace('cache miss')
 		if dir.open(dir_path) != OK:
 			return
 		if dir.list_dir_begin(true, false) != OK:
