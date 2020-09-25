@@ -392,8 +392,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="My Godot Project Template"
-config/description="include AI, some assets, basic game impl, husky/lint-staged/gdtoolkit setup"
+config/name="GameAssetBrowser"
+config/description="Manage large amounts of unsorted assets"
 run/main_scene="res://maps/TestMap.tscn"
 
 [editor_plugins]
