@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Reference",
+"class": "Appender",
+"language": "GDScript",
+"path": "res://gs_logger/appender.gd"
+}, {
+"base": "Reference",
 "class": "Array2D",
 "language": "GDScript",
 "path": "res://addons/godot-next/references/array_2d.gd"
@@ -54,6 +59,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-next/references/class_type.gd"
 }, {
+"base": "Appender",
+"class": "ConsoleAppender",
+"language": "GDScript",
+"path": "res://gs_logger/appenders/console_appender.gd"
+}, {
 "base": "TabContainer",
 "class": "Cycle",
 "language": "GDScript",
@@ -78,6 +88,11 @@ _global_script_classes=[ {
 "class": "FS",
 "language": "GDScript",
 "path": "res://src/FS.gd"
+}, {
+"base": "Appender",
+"class": "FileAppender",
+"language": "GDScript",
+"path": "res://gs_logger/appenders/file_appender.gd"
 }, {
 "base": "Reference",
 "class": "FileSearch",
@@ -244,6 +259,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/godot-next/2d/geometry_2d.gd"
 }, {
+"base": "Layout",
+"class": "HtmlLayout",
+"language": "GDScript",
+"path": "res://gs_logger/layouts/html_layout.gd"
+}, {
 "base": "Reference",
 "class": "Icons",
 "language": "GDScript",
@@ -260,6 +280,16 @@ _global_script_classes=[ {
 "path": "res://addons/godot-next/global/inspector_controls.gd"
 }, {
 "base": "Reference",
+"class": "Layout",
+"language": "GDScript",
+"path": "res://gs_logger/layout.gd"
+}, {
+"base": "Reference",
+"class": "Message",
+"language": "GDScript",
+"path": "res://gs_logger/message.gd"
+}, {
+"base": "Reference",
 "class": "MessageDispatcher",
 "language": "GDScript",
 "path": "res://addons/godot-next/references/message_dispatcher.gd"
@@ -268,6 +298,11 @@ _global_script_classes=[ {
 "class": "MessageDispatcherWrapper",
 "language": "GDScript",
 "path": "res://addons/godot-next/nodes/message_dispatcher_wrapper.gd"
+}, {
+"base": "Layout",
+"class": "PatternLayout",
+"language": "GDScript",
+"path": "res://gs_logger/layouts/pattern_layout.gd"
 }, {
 "base": "Resource",
 "class": "PhysicsLayers",
@@ -335,6 +370,7 @@ _global_script_classes=[ {
 "path": "res://addons/godot-next/global/variant.gd"
 } ]
 _global_script_class_icons={
+"Appender": "",
 "Array2D": "",
 "AsyncLoader": "",
 "Behavior": "",
@@ -344,11 +380,13 @@ _global_script_class_icons={
 "Cache": "",
 "CallbackDelegator": "",
 "ClassType": "",
+"ConsoleAppender": "",
 "Cycle": "res://addons/godot-next/icons/icon_cycle.svg",
 "DebugLabel": "",
 "DiscreteGradientTexture": "",
 "EditorTools": "",
 "FS": "",
+"FileAppender": "",
 "FileSearch": "",
 "FileSystemLink": "",
 "FutureThreadPool": "",
@@ -382,11 +420,15 @@ _global_script_class_icons={
 "GSAITargetAcceleration": "",
 "GSAIUtils": "",
 "Geometry2D": "",
+"HtmlLayout": "",
 "Icons": "",
 "Inflector": "",
 "InspectorControls": "",
+"Layout": "",
+"Message": "",
 "MessageDispatcher": "",
 "MessageDispatcherWrapper": "",
+"PatternLayout": "",
 "PhysicsLayers": "",
 "ProjectTools": "",
 "PropertyInfo": "",
@@ -407,6 +449,10 @@ _global_script_class_icons={
 config/name="GameAssetBrowser"
 config/description="Manage large amounts of unsorted assets"
 run/main_scene="res://App.tscn"
+
+[autoload]
+
+Logger="*res://gs_logger/logger.gd"
 
 [display]
 
