@@ -1,0 +1,14 @@
+<Control>
+    <CenterContainer>
+        <Label text="some text" />
+    </CenterContainer>
+    <PanelContainer>
+        </MarginContainer>
+        <VBoxContainer>
+            <template text="$items">
+                <Label text="text" />
+            </template>
+        </VBoxContainer>
+        <MarginContainer>
+    </PanelContainer>
+</Control>
