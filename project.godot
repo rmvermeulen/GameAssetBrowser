@@ -394,7 +394,12 @@ _global_script_class_icons={
 
 config/name="GameAssetBrowser"
 config/description="Manage large amounts of unsorted assets"
-run/main_scene="res://maps/TestMap.tscn"
+run/main_scene="res://App.tscn"
+
+[display]
+
+window/size/width=512
+window/size/height=376
 
 [editor_plugins]
 
