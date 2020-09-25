@@ -6,27 +6,68 @@ export (String) var path := "" setget set_path
 
 var cache: Cache = Singletons.fetch(Cache)
 
+var tasks := []
+var can_run_task := true
+
 
 func _ready():
 	assert(OK == connect("item_activated", self, "_on_item_activated"))
-	assert(OK == connect("item_selected", self, "_on_item_selected"))
+	assert(OK == connect("multi_selected", self, "_on_multi_selected"))
 	update_tree()
+	prints(name, 'ready')
 
 
-func _on_item_selected():
-	var item := get_selected()
-	if not item || not item.has_meta("path"):
+func _process(_delta):
+	if tasks.empty() || not can_run_task:
 		return
-	call_deferred("readdir", item.get_meta("path"), item)
-	# item.call_deferred("set", "collapsed", true)
+	can_run_task = false
+
+	var task = tasks.pop_front()
+	task.fn.call_func(task.arg)
+	yield(get_tree().create_timer(0.08), "timeout")
+
+	can_run_task = true
+
+
+func get_all_selected() -> Array:
+	prints('get all selected')
+	var last_item = get_selected()
+	if not last_item:
+		return []
+	var results = [last_item]
+	while true:
+		var item := get_next_selected(last_item)
+		if item:
+			results.append(item)
+		last_item = item
+	return results
+
+
+func _handle_selected_item(item: TreeItem):
+	readdir(item.get_meta("path"), item)
 	item.collapsed = true
 
 
-func _on_item_activated():
-	var item := get_selected()
-	if not item || not item.has_meta("path"):
+func _on_multi_selected(item: TreeItem, column: int, is_selected: bool):
+	if column != 0 || not is_selected:
 		return
-	item.collapsed = false
+	if not item.has_meta("path"):
+		return
+
+	tasks.append(
+		{
+			"fn": funcref(self, "_handle_selected_item"),
+			"arg": item,
+		}
+	)
+
+
+func _on_item_activated():
+	prints('on item activated')
+	for item in get_all_selected():
+		if not item.has_meta("path"):
+			continue
+		item.collapsed = false
 
 
 func set_path(value: String) -> void:
