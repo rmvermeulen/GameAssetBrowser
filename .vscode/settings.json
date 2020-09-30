@@ -3,5 +3,6 @@
     "cSpell.words": [
         "gdformat",
         "gdlint"
-    ]
+    ],
+    "godot_tools.editor_path": "/usr/local/bin/godot.x11.tools.64"
 }
